@@ -8,20 +8,19 @@ class EnvironmentConfig {
   /// Configuración para diferentes entornos
   static const Map<Environment, Map<String, dynamic>> _config = {
     Environment.development: {
-      'baseUrl':
-          'https://restcountries.com/v3.1', // Actualiza con tu IP local
+      'baseUrl': 'https://restcountries.com/v3.1',
       'enableLogging': true,
       'connectionTimeout': 30,
       'receiveTimeout': 30,
     },
     Environment.staging: {
-      'baseUrl': 'https://staging-api.viveresrosita.com/api/v1',
+      'baseUrl': 'https://restcountries.com/v3.1',
       'enableLogging': true,
       'connectionTimeout': 30,
       'receiveTimeout': 30,
     },
     Environment.production: {
-      'baseUrl': 'https://api.viveresrosita.com/api/v1',
+      'baseUrl': 'https://restcountries.com/v3.1',
       'enableLogging': false,
       'connectionTimeout': 15,
       'receiveTimeout': 15,

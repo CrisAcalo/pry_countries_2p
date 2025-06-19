@@ -1,19 +1,14 @@
 import 'environment_config.dart';
 
 class AppConfig {
-  // Configuración de la URL base de la API (se toma del entorno actual)
-  //
-  // IMPORTANTE: Para cambiar la URL, modifica environment_config.dart
-  //
-  // Para desarrollo local:
-  // - Emulador Android: 'http://10.0.2.2:3000/api/v1'
-  // - Emulador iOS: 'http://localhost:3000/api/v1'
-  // - Dispositivo físico en la misma red Wi-Fi: 'http://TU_IP_LOCAL:3000/api/v1'
-  //
-  // Para producción:
-  // - Servidor real: 'https://tu-dominio.com/api/v1'
-
+  // Configuración de la URL base de la API REST Countries
   static String get baseUrl => EnvironmentConfig.baseUrl;
+
+  // URLs específicas para la API REST Countries
+  static String get allCountriesUrl =>
+      '$baseUrl/all?fields=name,flags,capital,languages,area,borders,population,region,subregion,cca3';
+  static String searchCountriesByNameUrl(String name) =>
+      '$baseUrl/name/$name?fields=name,flags,capital,languages,area,borders,population,region,subregion,cca3';
 
   // Otras configuraciones de la app
   static const String appName = 'Countries App';
@@ -24,7 +19,6 @@ class AppConfig {
       Duration(seconds: EnvironmentConfig.connectionTimeout);
   static Duration get receiveTimeout =>
       Duration(seconds: EnvironmentConfig.receiveTimeout);
-
 
   // Configuración de desarrollo vs producción
   static bool get isDebugMode => EnvironmentConfig.isDevelopment;

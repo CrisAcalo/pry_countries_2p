@@ -13,21 +13,21 @@ class PaisRemoteDataSourceImpl implements PaisRemoteDataSource {
   final Dio dio;
 
   PaisRemoteDataSourceImpl({required this.dio});
-
   @override
   Future<List<Map<String, dynamic>>> fetchAllPaises() async {
     try {
-      final response = await dio.get('${AppConfig.baseUrl}/all');
+      final response = await dio.get(AppConfig.allCountriesUrl);
       if (response.statusCode == 200 && response.data is List) {
         // Aseguramos que la lista contiene Maps
         return List<Map<String, dynamic>>.from(
-          (response.data as List).whereType<Map<String, dynamic>>()
+          (response.data as List).whereType<Map<String, dynamic>>(),
         );
       } else {
         throw DioException(
           requestOptions: response.requestOptions,
           response: response,
-          error: 'Invalid response format or status code: ${response.statusCode}',
+          error:
+              'Invalid response format or status code: ${response.statusCode}',
           type: DioExceptionType.badResponse,
         );
       }
@@ -46,19 +46,19 @@ class PaisRemoteDataSourceImpl implements PaisRemoteDataSource {
       return fetchAllPaises(); // Si la búsqueda está vacía, devuelve todos
     }
     try {
-      final response = await dio.get('${AppConfig.baseUrl}/name/$name');
-       if (response.statusCode == 200 && response.data is List) {
+      final response = await dio.get(AppConfig.searchCountriesByNameUrl(name));
+      if (response.statusCode == 200 && response.data is List) {
         return List<Map<String, dynamic>>.from(
-          (response.data as List).whereType<Map<String, dynamic>>()
+          (response.data as List).whereType<Map<String, dynamic>>(),
         );
       } else if (response.statusCode == 404) {
         return []; // País no encontrado, devuelve lista vacía
-      }
-      else {
+      } else {
         throw DioException(
           requestOptions: response.requestOptions,
           response: response,
-          error: 'Invalid response format or status code: ${response.statusCode}',
+          error:
+              'Invalid response format or status code: ${response.statusCode}',
           type: DioExceptionType.badResponse,
         );
       }
