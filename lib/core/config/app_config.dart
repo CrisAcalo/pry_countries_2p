@@ -16,7 +16,7 @@ class AppConfig {
   static String get baseUrl => EnvironmentConfig.baseUrl;
 
   // Otras configuraciones de la app
-  static const String appName = 'Viveres Rosita';
+  static const String appName = 'Countries App';
   static const String appVersion = '1.0.0';
 
   // Timeouts para las peticiones HTTP (desde configuración de entorno)

@@ -9,7 +9,7 @@ class EnvironmentConfig {
   static const Map<Environment, Map<String, dynamic>> _config = {
     Environment.development: {
       'baseUrl':
-          'http://192.168.0.101:3000/api/v1', // Actualiza con tu IP local
+          'https://restcountries.com/v3.1', // Actualiza con tu IP local
       'enableLogging': true,
       'connectionTimeout': 30,
       'receiveTimeout': 30,
