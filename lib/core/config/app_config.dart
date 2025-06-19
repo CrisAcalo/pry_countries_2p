@@ -25,10 +25,6 @@ class AppConfig {
   static Duration get receiveTimeout =>
       Duration(seconds: EnvironmentConfig.receiveTimeout);
 
-  // URLs específicas (construidas a partir de baseUrl)
-  static String get ordersUrl => '$baseUrl/orders';
-  static String get productsUrl => '$baseUrl/products';
-  static String get usersUrl => '$baseUrl/users';
 
   // Configuración de desarrollo vs producción
   static bool get isDebugMode => EnvironmentConfig.isDevelopment;
